@@ -23,6 +23,12 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: 18
+            
+            - name: Cache NPM Dependencies
+              uses: actions/cache@v3
+              with:
+                path: node-modules
+                key: ubuntu-latest-node-modules-${{ hashFiles('package-lock.json')}}     
 
             - name: Install Dependencies
               run: npm install
@@ -48,6 +54,12 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: 18
+            
+            - name: Cache NPM Dependencies
+              uses: actions/cache@v3
+              with:
+                path: node-modules
+                key: ubuntu-latest-node-modules-${{ hashFiles('package-lock.json')}}     
 
             - name: Install Dependencies
               run: npm install
