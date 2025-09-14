@@ -6,17 +6,17 @@ on:
          mongodb_uri:
           required: true
           type: string
-        kubectl-version:
+         kubectl-version:
           description: Provide the required kubectl version
           default: v1.26.0
           required: false
           type: string
-        k8s-manifest-dir:
+         k8s-manifest-dir:
           description: Directory containing Kubernetes Manifests files
           default: kubernetes/
           required: true
           type: string
-        environment:
+         environment:
           description: Provide the deployment Environment
           default: dev
           required: true
