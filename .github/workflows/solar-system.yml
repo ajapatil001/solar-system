@@ -147,6 +147,10 @@ jobs:
       secrets: 
         k8s-kubeconfig: ${{ secrets.KUBECONFIG }}
         mongodb-password: ${{ secrets.MONGO_PASSWORD }}
+      with:
+        mongodb_uri: ${{ vars.MONGO_URI}}
+        environment: development 
+        k8s-manifest-dir: kubernetes/development/
 
     dev-integration-Testing:
       if: contains(github.ref, 'feature/')
@@ -169,6 +173,10 @@ jobs:
       secrets: 
         k8s-kubeconfig: ${{ secrets.KUBECONFIG }}
         mongodb-password: ${{ secrets.MONGO_PASSWORD }}
+      with:
+        mongodb_uri: ${{ vars.MONGO_URI}} 
+        environment: production 
+        k8s-manifest-dir: kubernetes/production/  
 
     prod-integration-Testing:
       name: Prod Integration Testing
