@@ -20,15 +20,16 @@ on:
           description: Provide the deployment Environment
           default: dev
           required: true
-          type: string     
+          type: string
+       outputs:
+        application-url:
+          value: ${{ jobs.reuse-deploy.outputs.APP_INGRESS_URL }}          
        secrets:
           k8s-kubeconfig:
             required: true
           mongodb-password:
             required: true
-       outputs:
-        application-uri:
-          value: ${{ jobs.reuse-deploy.outputs.APP_INGRESS_URL }}     
+          
 
 
 jobs:
