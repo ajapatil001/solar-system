@@ -192,7 +192,7 @@ jobs:
             --dry-run=client \
             -o yaml | kubectl apply -f .
 
-        - name: Deploy To Dev Env
+        - name: Deploy To Development Env
           run: |
             kubectl apply -f kubernetes/development    
           
