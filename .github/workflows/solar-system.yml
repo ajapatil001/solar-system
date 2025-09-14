@@ -281,7 +281,7 @@ jobs:
 
         - name: Deploy To Prod Env
           run: |
-            kubectl apply -f kubernetes/production 
+            kubectl apply -f kubernetes/development 
             
         - name: Set App Ingress Host URL
           id: set-ingress-host-address
