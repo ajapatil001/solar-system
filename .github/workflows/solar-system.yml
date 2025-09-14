@@ -267,7 +267,7 @@ jobs:
         
         - name: Check Files
           run: |
-            cat kubernetes/production/*.yaml 
+            cat kubernetes/development/*.yaml 
 
         - name: Create MongoDB Secret
           run: |
