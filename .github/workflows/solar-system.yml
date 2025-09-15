@@ -83,7 +83,34 @@ jobs:
                 name: Code-Coverage-Result
                 path: coverage
                 retention-days: 5 
-                
+    
+    reports-storage-account:
+      needs: [code-coverage,unit-testing]
+      name: Azure SA - Upload Reports
+      runs-on: ubuntu-latest
+      continue-on-error: true
+      steps:
+        - name: Download Mocha Test Artifact         
+          uses: actions/download-artifact@v3
+          with:
+            name: Mocha-Test-Result
+          
+        - name: Download Code Coverage Artifact         
+          uses: actions/download-artifact@v3
+          with:
+            name: Archive Test Result
+            
+        - name: Merge Test Files
+          run: |
+            ls -ltr
+            mkdir reports-${{ github.sha}}
+            mv cobertura-coverage.xml reports-${{ github.sha }}/
+            mv test-result.xml reports-${{ github.sha }}/
+            ls -ltr reports-${{ github.sha }}/
+            
+        - name: Upload To Azure Storage Account
+          run: echo "Uploading.... Azure Storage Account"    
+
     docker:
         name: Containerization
         needs: [unit-testing,code-coverage]
